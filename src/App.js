@@ -1,10 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
-import ClientPage from "../src/pages/ClientPage/ClientPage"
+import Home from "./pages/Home";
+
 
 function App() {
   return (
-    <ClientPage></ClientPage>
+    <div className="App">
+      <Home></Home>
+    </div>
   );
 }
 
