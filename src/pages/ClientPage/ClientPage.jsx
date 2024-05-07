@@ -1,31 +1,54 @@
-import React from "react";
-import withdrawImg from "../../../src/assets/images/withdraw.png"
-import depositImg from "../../../src/assets/images/deposit.png"
-import transferImg from "../../../src/assets/images/transfer.png"
+import React, {useState} from "react";
+
+//css
+import "./ClientPage.css";
+// import "../../components/DepositFund/DepositFund";
+
+//page imports
+import DepositFund from "../../components/DepositFund/DepositFund";
+import TransferFund from "../../components/TransferFund/TransferFund";
+import WithdrawFund from "../../components/WithdrawFund/WithdrawFund";
+import ExpenseList from "../../components/ExpenseList/ExpenseList";
+import virtualCard from "../../../src/assets/images/virtual-card.png";
+
+//image imports
 import expensesImg from "../../../src/assets/images/expenses.png"
-import "./ClientPage.css"
+import transferImg from "../../../src/assets/images/transfer.png"
+import depositImg from "../../../src/assets/images/deposit.png"
+import withdrawImg from "../../../src/assets/images/withdraw.png"
 
-const ClientPage = () =>{
-    return(
-        <div className="wrapper">
-            <div className="expenses-display">
-                <span>Expenses:</span>
-                <span>$10000</span>
-            </div>
-            <div className="bank-card"></div>
-            <div className="available-balance">
-                <span>Avilable Balance:</span>
-                <span>$10000</span>
-            </div>
+const ClientPage = () => {
+    const [depisOpen, setDepIsOpen] = useState(false);
+    const [withIsOpen, setWithIsOpen] = useState(false);
+    const [transIsOpen, setTransIsOpen] = useState(false);
+    const [expIsOpen, setExpIsOpen] = useState(false);
+  return (
+    <div className="wrapper">
+      <div className="expenses-display">
+        <span>Expenses:</span>
+        <span>$10000</span>
+      </div>
+      <div className="bank-card">
+        <img className="bank-card-img" src={virtualCard} alt="" />
+      </div>
+      <div className="available-balance">
+        <span>Avilable Balance:</span>
+        <span>$10000</span>
+      </div>
 
-            <div className="action-buttons">
-                <img className="action-img" src={withdrawImg} alt="withdraw"></img>
-                <img className="action-img" src={depositImg} alt="deposit"></img>
-                <img className="action-img" src={transferImg} alt="transfer"></img>
-                <img className="action-img" src={expensesImg} alt="expenses"></img>
-            </div>
-        </div>
-    );
-}
+      <DepositFund depOpen={depisOpen}></DepositFund>
+      <WithdrawFund withOpen={withIsOpen} withClose={(() => setWithIsOpen(false))} ></WithdrawFund>
+      <TransferFund transOpen={transIsOpen}></TransferFund>
+      <ExpenseList expOpen={expIsOpen}></ExpenseList>
+
+      <div className="action-buttons">
+        <img onClick={( () => setWithIsOpen(true))} className="action-img" src={withdrawImg} alt="withdraw"></img>
+        <img onClick={( () => setTransIsOpen(true))} className="action-img" src={transferImg} alt="transfer"></img>
+        <img onClick={( () => setDepIsOpen(true))} className="action-img" src={depositImg} alt="withdraw"></img>
+        <img onClick={( () => setExpIsOpen(true))} className="action-img" src={expensesImg} alt="withdraw"></img>
+      </div>
+    </div>
+  );
+};
 
 export default ClientPage;
