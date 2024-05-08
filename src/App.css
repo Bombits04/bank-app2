@@ -36,3 +36,90 @@
     transform: rotate(360deg);
   }
 }
+
+.logo {
+  height: 250px;
+  width: 250px; 
+}
+
+.logoInPages {
+  height: 150px;
+  width: 150px; 
+}
+
+.flex-parent {
+  display: flex;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.btnleft {
+  margin-right: 10px;
+  height: 100px;
+  width: 100px;
+  box-shadow: 0 0 20px 2px rgba(0,0,0, .1);
+  transition: 1s;
+}
+
+.btnleft:hover {
+	transform:scale(1.2);
+	z-index:2;
+}
+
+.btnright {
+  /* margin-left: 20px; */
+  height: 100px;
+  width: 100px;
+  box-shadow: 0 0 20px 2px rgba(0,0,0, .1);
+  transition: 1s;
+}
+
+.btnright:hover {
+	transform:scale(1.2);
+	z-index:2;
+}
+
+.wrapper {
+  background-color: #124e66;
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  grid-template-columns: repeat(11,1fr);
+  grid-template-rows: 0.3fr 1fr 1fr 0.3fr;
+  place-content: center;
+  /* grid-template-areas:
+    "exp . card . bal"
+    "actn actn actn actn actn"
+    ; */
+  /* grid-template-rows: 1fr 2fr 1fr; */
+}
+
+.action-buttons {
+  grid-row: 3/4;
+  grid-column: 3/10;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+.expenses-display {
+grid-column: span 3;
+  grid-row: 2/3;
+  border: 1px solid yellow;
+}
+.bank-card {
+  grid-column: 4/9;
+  grid-row: 2/2;
+  border: 1px solid green;
+}
+.available-balance {
+  grid-column: 9/12;
+  grid-row: 2/3;
+  border: 1px solid blueviolet;
+}
+.action-img {
+  justify-self: center;
+  height: 180px;
+}
