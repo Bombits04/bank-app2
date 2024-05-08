@@ -1,10 +1,23 @@
 import "./TransferFund.css";
-import React from 'react';
+import ReactDom from "react-dom";
 
-function TransferFund({transOpen}){
+function TransferFund({transOpen, transClose}){
     if (!transOpen) return null
-    return(
-        "\nTransfer"
+    return ReactDom.createPortal(
+        <div className="modal-container">
+          <div className="modal-comp-container">
+            <div onClick={transClose} className="modal-exit-button">
+              [X]
+            </div>
+            <div className="modal-item-container">
+              <div className="modal-title">Transfer Funds</div>
+              <div className="modal-body">MODAL BODY</div>
+              <div className="modal-footer">MODAL FOOTER</div>
+            </div>
+          </div>
+        </div>,
+    
+        document.getElementById("portal")
     );
 }
 

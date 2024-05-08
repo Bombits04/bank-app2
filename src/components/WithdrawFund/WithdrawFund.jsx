@@ -8,7 +8,9 @@ function WithdrawFund({ withOpen, withClose }) {
   return ReactDom.createPortal(
     <div className="modal-container">
       <div className="modal-comp-container">
-        <div onClick={withClose} className="modal-exit-button">[X]</div>
+        <div onClick={withClose} className="modal-exit-button">
+          [X]
+        </div>
         <div className="modal-item-container">
           <div className="modal-title">Withdraw Funds</div>
           <div className="modal-body">MODAL BODY</div>

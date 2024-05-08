@@ -36,10 +36,10 @@ const ClientPage = () => {
         <span>$10000</span>
       </div>
 
-      <DepositFund depOpen={depisOpen}></DepositFund>
+      <DepositFund depOpen={depisOpen} depClose={(() => setDepIsOpen(false))}></DepositFund>
       <WithdrawFund withOpen={withIsOpen} withClose={(() => setWithIsOpen(false))} ></WithdrawFund>
-      <TransferFund transOpen={transIsOpen}></TransferFund>
-      <ExpenseList expOpen={expIsOpen}></ExpenseList>
+      <TransferFund transOpen={transIsOpen} transClose={(() => setTransIsOpen(false))}></TransferFund>
+      <ExpenseList expOpen={expIsOpen} expClose={(() => setExpIsOpen(false))}></ExpenseList>
 
       <div className="action-buttons">
         <img onClick={( () => setWithIsOpen(true))} className="action-img" src={withdrawImg} alt="withdraw"></img>

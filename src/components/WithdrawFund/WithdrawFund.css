@@ -14,9 +14,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background-color: #d3d9d4;
     width: 600px;
     height: 500px;
+    border-radius: 8px
 }
 .modal-exit-button{
     text-align: right;
