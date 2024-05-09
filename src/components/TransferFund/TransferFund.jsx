@@ -1,4 +1,4 @@
-import "./TransferFund.css";
+//CSS IS IN WithdrawFunds.css
 import ReactDom from "react-dom";
 
 function TransferFund({transOpen, transClose}){

@@ -1,4 +1,4 @@
-import "./DepositFund.css";
+//CSS IS IN WithdrawFunds.css
 import withdrawImg from "../../../src/assets/images/withdraw.png";
 import ReactDom from "react-dom";
 

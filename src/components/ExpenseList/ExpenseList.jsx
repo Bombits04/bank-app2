@@ -1,4 +1,4 @@
-import "./ExpenseList.css";
+//CSS IS IN WithdrawFunds.css
 import ReactDom from "react-dom";
 
 function ExpenseList({expOpen, expClose}){
