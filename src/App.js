@@ -4,7 +4,7 @@ import EmployeePage from './pages/EmployeePage/Bank-Employee';
 import ClientPage from './pages/ClientPage/ClientPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import React, {useState} from 'react'
+import React from 'react'
 
 function App() {
   return (

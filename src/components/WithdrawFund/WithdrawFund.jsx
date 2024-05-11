@@ -20,9 +20,9 @@ function WithdrawFund({ withOpen, withClose }) {
         </div>
         <div className="modal-item-container">
           <div className="modal-title">
-            <span>Withdraw Funds</span>
+            <span className="montserrat-600">Withdraw Funds</span>
           </div>
-          <div className="modal-body">
+          <div className="modal-body poppins-light">
             <div className="input-row">
               <span>From acct no.: </span>
               <input type="number" />

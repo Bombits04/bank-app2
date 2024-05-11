@@ -2,7 +2,6 @@ import React, {useState} from "react";
 
 //css
 import "./ClientPage.css";
-// import "../../components/DepositFund/DepositFund";
 
 //page imports
 import DepositFund from "../../components/DepositFund/DepositFund";
