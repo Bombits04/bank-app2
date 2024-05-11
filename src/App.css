@@ -81,6 +81,22 @@
 	z-index:2;
 }
 
+
+.backIcon {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  box-shadow: 0 0 20px 2px rgba(0,0,0, .1);
+  transition: 1s;
+}
+
+.backIcon:hover {
+	transform:scale(1.2);
+	z-index:5;
+}
+
 /* .wrapper {
   background-color: #124e66;
   display: grid;

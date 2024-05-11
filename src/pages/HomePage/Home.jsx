@@ -13,11 +13,7 @@ function Home(){
         </br>
         <div class="flex-parent jc-center">
              <nav>
-                    {/** Navlink is a special kind of <Link> that knows whether or
-                     * not it is 'active' or 'pending'. So this is useful when building
-                     * a navigation menu.
-                    */}
-                    <NavLink className='item' to='employee'><img src={employeeImg} className='btnleft' alt='sample link'></img></NavLink>
+                    <NavLink className='item' to='employee'><img src={employeeImg} className='btnleft' alt='sample# link'></img></NavLink>
                     <NavLink className='item' to='client'><img src={clientImg} className='btnleft' alt='sample link'></img></NavLink>
              </nav>
         </div>
