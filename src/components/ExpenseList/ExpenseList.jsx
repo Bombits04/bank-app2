@@ -1,7 +1,20 @@
 //CSS IS IN WithdrawFunds.css
 import ReactDom from "react-dom";
+import "./ExpenseList.css";
+import customerData from "../../assets/data/CustomerData.json";
+import { useState } from "react";
 
 function ExpenseList({ expOpen, expClose }) {
+  const data = customerData.find((data) => data.customerName === "matt");
+  const { expenseList } = data;
+
+  const [expense, setExpense] = useState(expenseList);
+
+  const deleteExpense = (expId) => {
+    setExpense((oldList) => oldList.filter((exp) => exp.expId !== expId));
+    console.log(expense)
+  }
+
   if (!expOpen) return null;
   return ReactDom.createPortal(
     <div className="modal-container">
@@ -20,7 +33,42 @@ function ExpenseList({ expOpen, expClose }) {
           <div className="modal-title">
             <span className="montserrat-600">Expenses</span>
           </div>
-          <div className="modal-body">UNDER CONSTRUCTION</div>
+          <div className="modal-body">
+            <div className="info-container">
+              <div className="budget-disp">Avilable funds: </div>
+              <div className="expenses-disp">Expenses Total:</div>
+            </div>
+            <div className="expenses-list">
+              <div className="expense-item">
+                {
+                expenseList.map((data) => {
+                  return(
+                  <div key={data.expId}>
+                    <span>{data.expId}</span>
+                    <svg
+                      onClick={() => deleteExpense(data.expId)}
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                      height="15px"
+                      width="15px"
+                      fill="#7d041b"
+                    >
+                      <path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z" />
+                    </svg>
+                    <span className="item">{data.item}</span>
+                    <span className="amount">Php {data.amount}</span>
+                  </div>
+                  )
+                })
+                }
+              </div>
+            </div>
+            <div className="expense-add">
+              <input type="text" placeholder="Expense Name" />
+              <input type="number" placeholder="Expense Amount" />
+              <button>Add</button>
+            </div>
+          </div>
           <div className="modal-footer">MODAL FOOTER</div>
         </div>
       </div>
