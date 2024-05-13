@@ -4,7 +4,7 @@
   width: 400px;
 }
 .expenses-list {
-  min-height: 50px;
+  min-height: 25px;
   max-height: 500px;
   width: 400px;
   display: flex;

@@ -7,15 +7,14 @@ import { useState } from "react";
 function ExpenseList({ expOpen, expClose }) {
   const data = customerData.find((data) => data.customerName === "matt");
   const { expenseList } = data;
-
   const [expense, setExpense] = useState(expenseList);
 
-  const deleteExpense = (expId) => {
-    setExpense((oldList) => oldList.filter((exp) => exp.expId !== expId));
+  const deleteExpense = (Id) => {
+    setExpense((oldList) => oldList.filter((exp) => exp.expId !== Id));
     console.log(expense)
   }
 
-  if (!expOpen) return null;
+  if (!expOpen) return null
   return ReactDom.createPortal(
     <div className="modal-container">
       <div className="modal-comp-container">
@@ -41,10 +40,9 @@ function ExpenseList({ expOpen, expClose }) {
             <div className="expenses-list">
               <div className="expense-item">
                 {
-                expenseList.map((data) => {
+                expense.map((data) => {
                   return(
                   <div key={data.expId}>
-                    <span>{data.expId}</span>
                     <svg
                       onClick={() => deleteExpense(data.expId)}
                       xmlns="http://www.w3.org/2000/svg"
