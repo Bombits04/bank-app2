@@ -15,6 +15,8 @@ import DepositFund from "../../components/DepositFund/DepositFund";
 import TransferFund from "../../components/TransferFund/TransferFund";
 import WithdrawFund from "../../components/WithdrawFund/WithdrawFund";
 import ExpenseList from "../../components/ExpenseList/ExpenseList";
+import ClientData from "../../../src/assets/data/ClientData.json";
+
 
 function EmployeePage(){
     const [depisOpen, setDepIsOpen] = useState(false);
@@ -30,10 +32,26 @@ function EmployeePage(){
             <nav>
                     <NavLink className='item' to='/'><img src={backIcon} alt='back' className='backIcon'></img></NavLink>
              </nav>
-            <br>
-            </br>
-            <br>
-            </br>
+            {/* table */}
+            <table className="table">
+                <tr>
+                    <th>Client No.</th>
+                    <th>Client Name</th>
+                    <th>Available Balance</th>
+                </tr>
+                <tbody> 
+                        {
+                        ClientData.map( (clients, index)=>(
+                        <tr key={index}>                 
+                        <th>{ index+1}</th>
+                        <td>{ clients.name} </td>
+                        <td>{ clients.balance} </td>             
+                        </tr>
+                            ))
+                        }                        
+                    </tbody>
+
+            </table>
             <br>
             </br>
             <hr></hr>
@@ -46,15 +64,15 @@ function EmployeePage(){
 
             <div className="flex-parent jc-center">
                 <img className="btnleft" src={addUserImg} alt="add user"></img>
-                <img onClick={( () => setDepIsOpen(true))} className="action-img" src={depositImg} alt="withdraw"></img>
-                <img onClick={( () => setTransIsOpen(true))} className="action-img" src={transferImg} alt="transfer"></img>
+                <img onClick={( () => setDepIsOpen(true))} className="btnleft" src={depositImg} alt="withdraw"></img>
+                <img onClick={( () => setTransIsOpen(true))} className="btnleft" src={transferImg} alt="transfer"></img>
             </div>
             <br>
             </br>
             <div className="flex-parent jc-center">
                 <img className="btnleft" src={removeUserImg} alt="remove user"></img>
-                <img onClick={( () => setWithIsOpen(true))} className="action-img" src={withdrawImg} alt="withdraw"></img>
-                <img onClick={( () => setExpIsOpen(true))} className="action-img" src={expensesImg} alt="withdraw"></img>
+                <img onClick={( () => setWithIsOpen(true))} className="btnleft" src={withdrawImg} alt="withdraw"></img>
+                <img onClick={( () => setExpIsOpen(true))} className="btnleft" src={expensesImg} alt="withdraw"></img>
             </div>
         </div>
         

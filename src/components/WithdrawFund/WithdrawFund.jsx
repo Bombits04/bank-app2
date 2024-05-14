@@ -24,11 +24,15 @@ function WithdrawFund({ withOpen, withClose }) {
           </div>
           <div className="modal-body poppins-light">
             <div className="input-row">
-              <span>From acct no.: </span>
+              <span>Sender:</span>
               <input type="number" />
             </div>
             <div className="input-row">
-              <span>Amount: </span>
+              <span>Receiver:</span>
+              <input type="number" />
+            </div>
+            <div className="input-row">
+              <span>Amount:</span>
               <input type="number"/>
             </div>
           </div>

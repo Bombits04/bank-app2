@@ -97,6 +97,14 @@
 	z-index:5;
 }
 
+.table {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: azure;
+  width: 50%;
+}
+
+
 /* .wrapper {
   background-color: #124e66;
   display: grid;

@@ -35,7 +35,7 @@ const ClientPage = () => {
         <span>$10000</span>
       </div>
       <div className="bank-card">
-        <img className="bank-card-img" src={virtualCard} alt="" />
+        <img className="bank-card-img" src={virtualCard} alt=""/>
       </div>
       <div className="available-balance">
         <span>Avilable Balance:</span>
