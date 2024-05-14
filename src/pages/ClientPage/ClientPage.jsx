@@ -15,6 +15,11 @@ import expensesImg from "../../../src/assets/images/expenses.png"
 import transferImg from "../../../src/assets/images/transfer.png"
 import depositImg from "../../../src/assets/images/deposit.png"
 import withdrawImg from "../../../src/assets/images/withdraw.png"
+// import logo from "../../../src/assets/images/logo.png";
+
+//back and nav link import
+// import backIcon from "../../../src/assets/images/back.png";
+// import { NavLink } from 'react-router-dom';
 
 const ClientPage = () => {
     const [depisOpen, setDepIsOpen] = useState(false);
@@ -22,6 +27,8 @@ const ClientPage = () => {
     const [transIsOpen, setTransIsOpen] = useState(false);
     const [expIsOpen, setExpIsOpen] = useState(false);
   return (
+    
+    
     <div className="wrapper">
       <div className="expenses-display">
         <span>Expenses:</span>
