@@ -1,7 +1,7 @@
 [
     {
         "id": 0,
-        "name": "Justin Bieber",
+        "name": "Ariana Grande",
         "balance": 100000
     },
     {
@@ -16,7 +16,7 @@
     },
     {
         "id": 3,
-        "name": "Ariana Grande",
+        "name": "Justin Bieber",
         "balance": 100000
     },
     {

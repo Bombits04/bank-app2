@@ -104,6 +104,33 @@
   width: 50%;
 }
 
+.transferForm {
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  background-color: #506e8b;
+  padding: 20px;
+  width: 20%;
+}
+
+.depositForm {
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  background-color: #506e8b;
+  padding: 20px;
+  width: 20%;
+}
+
+.withdrawForm {
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  background-color: #506e8b;
+  padding: 20px;
+  width: 20%;
+}
+
 
 /* .wrapper {
   background-color: #124e66;

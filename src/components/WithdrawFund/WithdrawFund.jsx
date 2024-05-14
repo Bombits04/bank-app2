@@ -24,11 +24,7 @@ function WithdrawFund({ withOpen, withClose }) {
           </div>
           <div className="modal-body poppins-light">
             <div className="input-row">
-              <span>Sender:</span>
-              <input type="number" />
-            </div>
-            <div className="input-row">
-              <span>Receiver:</span>
+              <span>Account Name:</span>
               <input type="number" />
             </div>
             <div className="input-row">

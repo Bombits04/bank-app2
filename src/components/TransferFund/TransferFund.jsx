@@ -22,11 +22,11 @@ function TransferFund({ transOpen, transClose }) {
           </div>
           <div className="modal-body poppins-light">
             <div className="input-row">
-              <span>From acct no.: </span>
+              <span>Sender:</span>
               <input type="number" />
             </div>
             <div className="input-row">
-              <span>To acct no.: </span>
+              <span>Receiver:</span>
               <input type="number" min="1" />
             </div>
             <div className="input-row">
