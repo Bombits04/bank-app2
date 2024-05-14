@@ -1,0 +1,27 @@
+[
+    {
+        "id": 0,
+        "name": "Justine Bieber",
+        "balance": 100000
+    },
+    {
+        "id": 1,
+        "name": "Bruno Mars",
+        "balance": 100000
+    }, 
+    {
+        "id": 2,
+        "name": "Jason Mraz",
+        "balance": 50000
+    },
+    {
+        "id": 3,
+        "name": "Ariana Grande",
+        "balance": 100000
+    },
+    {
+        "id": 4,
+        "name": "Taylor Swift",
+        "balance": 100000
+    }
+]
