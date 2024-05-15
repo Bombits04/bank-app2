@@ -43,6 +43,9 @@ function WithdrawFund({ withOpen, withClose, ClientData, isClient, sendDataToPar
     }
     sendDataToParent(users);
     setAmount("");
+    if(!isClient){
+      setSender("");
+    }
   };
 
   if (!withOpen) return null;

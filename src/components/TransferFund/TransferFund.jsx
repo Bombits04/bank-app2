@@ -52,6 +52,9 @@ function TransferFund({ transOpen, transClose, ClientData, isClient, sendDataToP
     sendDataToParent(users);
     setReceiver("");
     setAmount("");
+    if(!isClient){
+      setSender("");
+    }
 }
 
 

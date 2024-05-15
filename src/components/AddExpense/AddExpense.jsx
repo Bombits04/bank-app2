@@ -7,14 +7,14 @@ function AddExpenses(props) {
   const [expenseAmount, setExpenseAmount] = useState("");
 
   const addExpense = (event) => {
-    const newTaskObject = {
+    const newExpenseObj = {
       item: expenseItem,
       amount: expenseAmount,
       expId: newId,
     };
 
-    console.log(newTaskObject);
-    handleAddTasks(newTaskObject);
+    console.log(newExpenseObj);
+    handleAddTasks(newExpenseObj);
 
     setExpenseItem("");
     setExpenseAmount("");
