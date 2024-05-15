@@ -8,6 +8,7 @@ function DepositFund({ depOpen, depClose, ClientData, isClient, sendDataToParent
   const [sender, setSender] = useState(()=>(isClient? "Ariana Grande":""));
   // const [receiver, setReceiver] = useState();
   const [amount, setAmount] = useState("");
+  const [data, setData] = useState("");
 
   const userExist = (name) => {
     // returns true if name from parameter is already in our users array
@@ -20,6 +21,7 @@ const findUser = (name) => {
     return foundUser[0];
 }
 
+
 const depositMoney = () => {
   const newAmount = Number(amount);
   if(userExist(sender) && newAmount > 0){
@@ -27,11 +29,13 @@ const depositMoney = () => {
   if(senderInfo.balance >= newAmount){
       const updateUsers = users.map((user) => {
       if(user.name === sender){
+        
           return {...user, balance: user.balance + newAmount};
       }
       return user;
       });
       setUsers(updateUsers);
+      
   }
   else {
       alert("Not enough balance!");
@@ -39,8 +43,12 @@ const depositMoney = () => {
   } else {
   alert("Transaction invalid!");
   }
-  sendDataToParent(users);
+  setData(users)
+  sendDataToParent(data);
   setAmount("");
+  if(!isClient){
+    setSender("");
+  }
 }
 
 

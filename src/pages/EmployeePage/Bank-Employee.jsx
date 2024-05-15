@@ -29,10 +29,97 @@ function EmployeePage(){
     // const [dataFromChild, setDataFromChild] = useState("");
 
     const [users, setUsers] = useState(ClientData);
-    
-    function handleDataFromChild(data) {
-        setUsers(data);
-     }
+    const [show, setShow] = useState(false);
+    const [showDepo, setShowDepo] = useState(false);
+    const [showWithdraw, setShowWithdraw] = useState(false);
+    const [sender, setSender] = useState("");
+    const [receiver, setReceiver] = useState("");
+    const [amount, setAmount] = useState("");
+
+    const userExist = (name) => {
+        return users.find((user) => user.name === name);
+    }
+
+    const findUser = (name) => {
+        let foundUser = users.filter((user) => user.name === name);
+        return foundUser[0];
+    }
+
+    const transferMoney = () => {
+        const newAmount = Number(amount);
+        if(userExist(sender) && userExist(receiver) && sender !== receiver && newAmount > 0){
+        const senderInfo = findUser(sender);
+        if(senderInfo.balance >= newAmount){
+            const updateUsers = users.map((user) => {
+            if(user.name === sender){
+                return {...user, balance: user.balance - newAmount};
+            } else if(user.name === receiver) {
+                return {...user, balance: user.balance + newAmount};
+            }
+            return user;
+            });
+            setUsers(updateUsers);
+        }
+        else {
+            alert("Not enough balance!");
+        }
+        } else {
+        alert("Transaction invalid!");
+        }
+        setSender("");
+        setReceiver("");
+        setAmount("");
+        setShow(false);
+    }
+
+    const depositMoney = () => {
+        const newAmount = Number(amount);
+        if(userExist(sender) && newAmount > 0){
+        const senderInfo = findUser(sender);
+        if(senderInfo.balance >= newAmount){
+            const updateUsers = users.map((user) => {
+            if(user.name === sender){
+                return {...user, balance: user.balance + newAmount};
+            }
+            return user;
+            });
+            setUsers(updateUsers);
+        }
+        else {
+            alert("Not enough balance!");
+        }
+        } else {
+        alert("Transaction invalid!");
+        }
+        setSender("");
+        setAmount("");
+        setShowDepo(false);
+    }
+
+    const withdrawMoney = () => {
+        const newAmount = Number(amount);
+        if(userExist(sender) && newAmount > 0){
+        const senderInfo = findUser(sender);
+        if(senderInfo.balance >= newAmount){
+            const updateUsers = users.map((user) => {
+            if(user.name === sender){
+                return {...user, balance: user.balance - newAmount};
+            }
+            return user;
+            });
+            setUsers(updateUsers);
+        }
+        else {
+            alert("Not enough balance!");
+        }
+        } else {
+        alert("Transaction invalid!");
+        }
+        setSender("");
+        setAmount("");
+        setShowWithdraw(false);
+    }
+
     return (
         
         <div className="employee">
@@ -64,26 +151,77 @@ function EmployeePage(){
             </table>
             <br>
             </br>
-        
+        {
+        show &&
+        (
+        <div className="transferForm">
+          <form onSubmit={transferMoney}>
+            <label>Sender: </label>
+            <input type="text" value={sender} onChange={(event) => setSender(event.target.value)} required></input>
+            <br />
+            <label>Receiver: </label>
+            <input type="text" value={receiver} onChange={(event) => setReceiver(event.target.value)} required></input>
+            <br />
+            <label>Amount: </label>
+            <input type="number" onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()} value={amount} onChange={(event) => setAmount(event.target.value)} required></input>
+            <br />
+            <button>Transfer</button>
+          </form>
+        </div>
+        )
+        }
+            <br/>
+        {
+        showDepo &&
+        (
+            <div className="depositForm">
+              <form onSubmit={depositMoney}>
+                <label>Client Name:</label>
+                <input type="text" value={sender} onChange={(event) => setSender(event.target.value)} required></input>
+                <br />
+                <label>Amount: </label>
+                <input type="number" onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()} value={amount} onChange={(event) => setAmount(event.target.value)} required></input>
+                <br />
+                <button>Deposit</button>
+              </form>
+            </div>
+        )
+        }
+            <br/>
+        {
+        showWithdraw &&
+        (
+            <div className="withdrawForm">
+              <form onSubmit={withdrawMoney}>
+                <label>Client Name:</label>
+                <input type="text" value={sender} onChange={(event) => setSender(event.target.value)} required></input>
+                <br />
+                <label>Amount: </label>
+                <input type="number" onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()} value={amount} onChange={(event) => setAmount(event.target.value)} required></input>
+                <br />
+                <button>Withdraw</button>
+              </form>
+            </div>
+        )
+        }
       
             <hr></hr>
             <br/>
-
-            <DepositFund sendDataToParent={handleDataFromChild} isClient={false} ClientData={users} depOpen={depisOpen} depClose={(() => setDepIsOpen(false))}></DepositFund>
-            <WithdrawFund sendDataToParent={handleDataFromChild} isClient={false} ClientData={users} withOpen={withIsOpen} withClose={(() => setWithIsOpen(false))} ></WithdrawFund>
-            <TransferFund sendDataToParent={handleDataFromChild} isClient={false} ClientData={users} transOpen={transIsOpen} transClose={(() => setTransIsOpen(false))}></TransferFund>
-            <ExpenseList sendDataToParent={handleDataFromChild} isClient={false} ClientData={users} expOpen={expIsOpen} expClose={(() => setExpIsOpen(false))}></ExpenseList>
+            <DepositFund isClient={false} ClientData={users} depOpen={depisOpen} depClose={(() => setDepIsOpen(false))}></DepositFund>
+            <WithdrawFund isClient={false} ClientData={users} withOpen={withIsOpen} withClose={(() => setWithIsOpen(false))} ></WithdrawFund>
+            <TransferFund isClient={false} ClientData={users} transOpen={transIsOpen} transClose={(() => setTransIsOpen(false))}></TransferFund>
+            <ExpenseList isClient={false} ClientData={users} expOpen={expIsOpen} expClose={(() => setExpIsOpen(false))}></ExpenseList>
 
             <div className="flex-parent jc-center">
                 <img className="btnleft" src={addUserImg} alt="add user"></img>
-                <img className="btnleft" src={depositImg} alt="deposit" onClick={( () => setDepIsOpen(true))}></img>
-                <img className="btnleft" src={transferImg} alt="transfer" onClick={( () => setTransIsOpen(true))}></img>
+                <img className="btnleft" src={depositImg} alt="deposit" onClick={() => setShowDepo(showDepo ? false:true)}></img>
+                <img className="btnleft" src={transferImg} alt="transfer" onClick={()=> setShow(show ? false:true)}></img>
             </div>
             <br>
             </br>
             <div className="flex-parent jc-center">
                 <img className="btnleft" src={removeUserImg} alt="remove user"></img>
-                <img className="btnleft" src={withdrawImg} alt="withdraw" onClick={( () => setWithIsOpen(true))}></img>
+                <img className="btnleft" src={withdrawImg} alt="withdraw" onClick={() => setShowWithdraw(showWithdraw? false:true)}></img>
                 <img onClick={( () => setExpIsOpen(true))} className="btnleft" src={expensesImg} alt="withdraw"></img>
             </div>
         </div>
