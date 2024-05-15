@@ -137,7 +137,8 @@ function EmployeePage(){
                         <tr key={index}>                 
                         <th>{ index+1}</th>
                         <td>{ clients.name} </td>
-                        <td>{ clients.balance} </td>             
+                        <td>{ clients.balance} </td>
+                        {/* <td><button onClick={handleDelete(current.id)}>X</button></td>             */}
                         </tr>
                             ))
                         }                        

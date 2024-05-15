@@ -104,6 +104,11 @@
   width: 50%;
 }
 
+.table tr:hover{
+  background-color: #124e66;
+  color: white;
+}
+
 .transferForm {
   margin-left: auto;
   margin-right: auto;
