@@ -34,7 +34,7 @@ function ExpenseList({ expOpen, expClose }) {
           </div>
           <div className="modal-body">
             <div className="info-container">
-              <div className="budget-disp">Avilable funds: </div>
+              <div className="budget-disp">Expense Name: </div>
               <div className="expenses-disp">Expenses Total:</div>
             </div>
             <div className="expenses-list">

@@ -25,7 +25,7 @@ function EmployeePage(){
     const [expIsOpen, setExpIsOpen] = useState(false);
 
     const [users, setUsers] = useState(ClientData);
-    const [show, setShow] = useState(false); // flag to hide or show the element
+    const [show, setShow] = useState(false);
     const [showDepo, setShowDepo] = useState(false);
     const [showWithdraw, setShowWithdraw] = useState(false);
     const [sender, setSender] = useState("");
@@ -33,13 +33,11 @@ function EmployeePage(){
     const [amount, setAmount] = useState("");
 
     const userExist = (name) => {
-        // returns true if name from parameter is already in our users array
         return users.find((user) => user.name === name);
     }
 
     const findUser = (name) => {
         let foundUser = users.filter((user) => user.name === name);
-        // returns the user object that matches the name in our parameter
         return foundUser[0];
     }
 
@@ -160,7 +158,7 @@ function EmployeePage(){
             <input type="text" value={receiver} onChange={(event) => setReceiver(event.target.value)} required></input>
             <br />
             <label>Amount: </label>
-            <input type="number" value={amount} onChange={(event) => setAmount(event.target.value)} required></input>
+            <input type="number" onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()} value={amount} onChange={(event) => setAmount(event.target.value)} required></input>
             <br />
             <button>Transfer</button>
           </form>
@@ -177,7 +175,7 @@ function EmployeePage(){
                 <input type="text" value={sender} onChange={(event) => setSender(event.target.value)} required></input>
                 <br />
                 <label>Amount: </label>
-                <input type="number" value={amount} onChange={(event) => setAmount(event.target.value)} required></input>
+                <input type="number" onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()} value={amount} onChange={(event) => setAmount(event.target.value)} required></input>
                 <br />
                 <button>Deposit</button>
               </form>
@@ -194,7 +192,7 @@ function EmployeePage(){
                 <input type="text" value={sender} onChange={(event) => setSender(event.target.value)} required></input>
                 <br />
                 <label>Amount: </label>
-                <input type="number" value={amount} onChange={(event) => setAmount(event.target.value)} required></input>
+                <input type="number" onKeyDown={(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()} value={amount} onChange={(event) => setAmount(event.target.value)} required></input>
                 <br />
                 <button>Withdraw</button>
               </form>

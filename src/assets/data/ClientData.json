@@ -23,5 +23,30 @@
         "id": 4,
         "name": "Taylor Swift",
         "balance": 100000
+    },
+    {
+        "id": 5,
+        "name": "Pharell Williams",
+        "balance": 60000
+    },
+    {
+        "id": 6,
+        "name": "Kelly Clarkson",
+        "balance": 90000
+    },
+    {
+        "id": 7,
+        "name": "Lady Gaga",
+        "balance": 30000
+    },
+    {
+        "id": 8,
+        "name": "Miley Cyrus",
+        "balance": 100000
+    },
+    {
+        "id": 9,
+        "name": "Meghan Trainor",
+        "balance": 40000
     }
 ]
