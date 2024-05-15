@@ -212,14 +212,14 @@ function EmployeePage(){
 
             <div className="flex-parent jc-center">
                 <img className="btnleft" src={addUserImg} alt="add user"></img>
-                <img className="btnleft" src={depositImg} alt="deposit" onClick={() => setShowDepo(show ? false:true)}></img>
+                <img className="btnleft" src={depositImg} alt="deposit" onClick={() => setShowDepo(showDepo ? false:true)}></img>
                 <img className="btnleft" src={transferImg} alt="transfer" onClick={() => setShow(show ? false:true)}></img>
             </div>
             <br>
             </br>
             <div className="flex-parent jc-center">
                 <img className="btnleft" src={removeUserImg} alt="remove user"></img>
-                <img className="btnleft" src={withdrawImg} alt="withdraw" onClick={() => setShowWithdraw(show ? false:true)}></img>
+                <img className="btnleft" src={withdrawImg} alt="withdraw" onClick={() => setShowWithdraw(showWithdraw ? false:true)}></img>
                 <img onClick={( () => setExpIsOpen(true))} className="btnleft" src={expensesImg} alt="withdraw"></img>
             </div>
         </div>
