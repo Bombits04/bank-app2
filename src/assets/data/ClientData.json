@@ -2,7 +2,7 @@
     {
         "id": 0,
         "name": "Ariana Grande",
-        "balance": 100000,
+        "balance": 40000,
         "expenseList": [
             {
               "expId": 1,
@@ -28,49 +28,49 @@
     {
         "id": 1,
         "name": "Bruno Mars",
-        "balance": 100000,
+        "balance": 40000,
         "expenseList": []
     }, 
     {
         "id": 2,
         "name": "Jason Mraz",
-        "balance": 50000,
+        "balance": 90000,
         "expenseList": []
     },
     {
         "id": 3,
         "name": "Justin Bieber",
-        "balance": 100000,
+        "balance": 500000,
         "expenseList": []
     },
     {
         "id": 4,
         "name": "Taylor Swift",
-        "balance": 100000,
+        "balance": 900000,
         "expenseList": []
     },
     {
         "id": 5,
         "name": "Pharell Williams",
-        "balance": 60000,
+        "balance": 90000,
         "expenseList": []
     },
     {
         "id": 6,
         "name": "Kelly Clarkson",
-        "balance": 90000,
+        "balance": 80000,
         "expenseList": []
     },
     {
         "id": 7,
         "name": "Lady Gaga",
-        "balance": 30000,
+        "balance": 40000,
         "expenseList": []
     },
     {
         "id": 8,
         "name": "Miley Cyrus",
-        "balance": 100000,
+        "balance": 900000,
         "expenseList": []
     },
     {

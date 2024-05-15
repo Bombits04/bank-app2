@@ -76,7 +76,7 @@ const depositMoney = () => {
           <div className="modal-body poppins-light">
             <div className="input-row"></div>
             <div className="input-row">
-              <span>To acct no.: </span>
+              <span>Account Name: </span>
               <input type="text" value={sender} onChange={(event) => setSender(event.target.value)} required disabled={isClient}></input>
             </div>
             <div className="input-row">

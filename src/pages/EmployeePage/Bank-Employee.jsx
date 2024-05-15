@@ -24,6 +24,10 @@ function EmployeePage(){
     const [transIsOpen, setTransIsOpen] = useState(false);
     const [expIsOpen, setExpIsOpen] = useState(false);
 
+    
+
+    // const [dataFromChild, setDataFromChild] = useState("");
+
     const [users, setUsers] = useState(ClientData);
     const [show, setShow] = useState(false);
     const [showDepo, setShowDepo] = useState(false);
@@ -137,7 +141,8 @@ function EmployeePage(){
                         <tr key={index}>                 
                         <th>{ index+1}</th>
                         <td>{ clients.name} </td>
-                        <td>{ clients.balance} </td>             
+                        <td>{ clients.balance} </td>
+                        <td><button class="button">X</button></td>            
                         </tr>
                             ))
                         }                        

@@ -92,6 +92,25 @@
   transition: 1s;
 }
 
+.button {
+  background-color: azure;
+  color: red;
+  border: 1px solid red;
+  padding: 5px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin: 2px 1px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: red;
+  color: white;
+}
+
 .backIcon:hover {
 	transform:scale(1.2);
 	z-index:5;
@@ -102,6 +121,11 @@
   margin-right: auto;
   background-color: azure;
   width: 50%;
+}
+
+.table tr:hover{
+  background-color: #124e66;
+  color: white;
 }
 
 .transferForm {
