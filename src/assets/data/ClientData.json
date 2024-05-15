@@ -6,19 +6,22 @@
         "expenseList": [
             {
               "expId": 1,
-              "item": "bills",
-              "amount": 1
+              "item": "Meralco",
+              "amount": 1590
             },
-            { "expId": 2, "item": "cigarettes", "amount": 1 },
+            { "expId": 2,
+              "item": "Globe",
+              "amount": 1999
+            },
             {
               "expId": 3,
-              "item": "pc",
-              "amount": 1
+              "item": "Tools",
+              "amount": 869
             },
             {
               "expId": 4,
-              "item": "vape",
-              "amount": 1
+              "item": "Vape",
+              "amount": 400
             }]
         
     },

@@ -2,7 +2,7 @@
 import ReactDom from "react-dom";
 import React, {useState}  from "react";
 
-function DepositFund({ depOpen, depClose, ClientData, isClient }) {
+function DepositFund({ depOpen, depClose, ClientData, isClient, sendDataToParent }) {
 
   const [users, setUsers] = useState(ClientData);
   const [sender, setSender] = useState(()=>(isClient? "Ariana Grande":""));
@@ -39,8 +39,8 @@ const depositMoney = () => {
   } else {
   alert("Transaction invalid!");
   }
+  sendDataToParent(users);
   setAmount("");
- 
 }
 
 

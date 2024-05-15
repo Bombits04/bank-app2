@@ -3,24 +3,21 @@ import React, {useState} from "react";
 //css
 import "./ClientPage.css";
 
-//page imports
+//component imports
 import DepositFund from "../../components/DepositFund/DepositFund";
 import TransferFund from "../../components/TransferFund/TransferFund";
 import WithdrawFund from "../../components/WithdrawFund/WithdrawFund";
 import ExpenseList from "../../components/ExpenseList/ExpenseList";
-import virtualCard from "../../../src/assets/images/virtual-card.png";
+
 
 //image imports
+import virtualCard from "../../../src/assets/images/virtual-card.png";
 import expensesImg from "../../../src/assets/images/expenses.png"
 import transferImg from "../../../src/assets/images/transfer.png"
 import depositImg from "../../../src/assets/images/deposit.png"
 import withdrawImg from "../../../src/assets/images/withdraw.png"
 import ClientData from "../../../src/assets/data/ClientData.json";
-// import logo from "../../../src/assets/images/logo.png";
 
-//back and nav link import
-// import backIcon from "../../../src/assets/images/back.png";
-// import { NavLink } from 'react-router-dom';
 
 const ClientPage = () => {
     const [depisOpen, setDepIsOpen] = useState(false);
