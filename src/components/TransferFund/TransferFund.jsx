@@ -35,10 +35,15 @@ function TransferFund({ transOpen, transClose, ClientData, isClient, sendDataToP
     if(senderInfo.balance >= newAmount){
         const updateUsers = users.map((user) => {
         if(user.name === sender){
+          console.log(`Sender:${sender} Balance: ${user.balance-newAmount}`);
             return {...user, balance: user.balance - newAmount};
+            
         } else if(user.name === receiver) {
+          console.log(`Receiver:${receiver} Balance: ${user.balance+newAmount}`);
+          alert("Transfer Success!")
             return {...user, balance: user.balance + newAmount};
         }
+        
         return user;
         });
         setUsers(updateUsers);
@@ -49,7 +54,7 @@ function TransferFund({ transOpen, transClose, ClientData, isClient, sendDataToP
     } else {
     alert("Transaction invalid!");
     }
-    sendDataToParent(users);
+    // sendDataToParent(users);
     setReceiver("");
     setAmount("");
     if(!isClient){

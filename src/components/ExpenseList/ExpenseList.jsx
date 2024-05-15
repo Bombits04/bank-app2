@@ -7,9 +7,10 @@ import AddExpenses from "../../components/AddExpense/AddExpense";
 
 
 
-function ExpenseList({expOpen, expClose, ClientData}) {
+function ExpenseList({expOpen, expClose, isClient, ClientData}) {
   
-  const data = ClientData.find((data) => data.name === "Ariana Grande");
+  // const data = ClientData.find((data) => data.name === "Ariana Grande");
+  const [data, setData] = useState(ClientData.find((data) => data.name === "Ariana Grande"));
   const { expenseList } = data;
   const [expense, setExpense] = useState(expenseList);
   const [count, setCount] = useState(expense.length + 1);
@@ -19,6 +20,14 @@ function ExpenseList({expOpen, expClose, ClientData}) {
   const [updatedBalance, setUpdatedBalance] = useState(
     data.balance - sum
   );
+
+  const [selectValue, setSelectValue] = useState("");
+  const onChange = (e) => {
+    const value = e.target.value;
+    setSelectValue(value);
+    setData(ClientData.find((data) => data.name === selectValue));
+    setExpense(data.expenseList);
+  }
 
 
   const updateValuesDelete = (Id) => {
@@ -72,6 +81,23 @@ function ExpenseList({expOpen, expClose, ClientData}) {
             <span className="montserrat-600">Expenses</span>
           </div>
           <div className="modal-body">
+            
+            {!isClient && (
+            
+            <select onChange={onChange} name="users" id="users" className="select-users">
+              {ClientData.map((users, i) =>{
+                return(
+                 <>
+                    <option key= {i} value={users.name}>{users.name}</option>
+        
+                    </>
+                )
+              } )}
+              
+              
+            </select>
+            )
+            }
             <div className="info-container">
               <div className="budget-disp">
                 Avilable funds: {updatedBalance}

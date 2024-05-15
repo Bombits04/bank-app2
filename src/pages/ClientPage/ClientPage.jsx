@@ -38,15 +38,15 @@ const ClientPage = () => {
                     <NavLink className='item' to='/'><img src={backIcon} alt='back' className='backIcon'></img></NavLink>
              </nav>
       <div className="expenses-display">
-        <span>Expenses:</span>
-        <span>$10000</span>
+        <span className= "montserrat-700 fs-big">Expenses: </span>
+        <span className= "montserrat-700 fs-big">Php 10000</span>
       </div>
       <div className="bank-card">
         <img className="bank-card-img" src={virtualCard} alt=""/>
       </div>
       <div className="available-balance">
-        <span>Avilable Balance:</span>
-        <span>$10000</span>
+        <span className= "montserrat-700 fs-big">Avilable Balance: </span>
+        <span className= "montserrat-700 fs-big">Php 10000</span>
       </div>
 
       <DepositFund isClient={true} ClientData={users} depOpen={depisOpen} depClose={(() => setDepIsOpen(false))}></DepositFund>

@@ -29,9 +29,11 @@ const depositMoney = () => {
   if(senderInfo.balance >= newAmount){
       const updateUsers = users.map((user) => {
       if(user.name === sender){
-        
+        alert("Deposit Success!")
+          console.log(`${user.balance + newAmount}`)
           return {...user, balance: user.balance + newAmount};
       }
+      
       return user;
       });
       setUsers(updateUsers);

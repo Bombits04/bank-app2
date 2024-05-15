@@ -30,6 +30,7 @@ function WithdrawFund({ withOpen, withClose, ClientData, isClient, sendDataToPar
         const updateUsers = users.map((user) => {
           if (user.name === sender) {
             alert("Withdraw Success!")
+            console.log(user.balance-newAmount);
             return { ...user, balance: user.balance - newAmount };
           }
           return user;
@@ -41,8 +42,9 @@ function WithdrawFund({ withOpen, withClose, ClientData, isClient, sendDataToPar
     } else {
       alert("Transaction invalid!");
     }
-    sendDataToParent(users);
+    // sendDataToParent(users);
     setAmount("");
+    
     if(!isClient){
       setSender("");
     }
