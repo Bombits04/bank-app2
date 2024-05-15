@@ -202,11 +202,10 @@ function EmployeePage(){
       
             <hr></hr>
             <br/>
-            <DepositFund depOpen={depisOpen} depClose={(() => setDepIsOpen(false))}></DepositFund>
-            <WithdrawFund withOpen={withIsOpen} withClose={(() => setWithIsOpen(false))} ></WithdrawFund>
-            <TransferFund withOpen={transIsOpen} withClose={(() => setTransIsOpen(false))} ></TransferFund>
-            {/* <img className="btnleft" src={transferImg} alt="transfer" onClick={() => setShow(show ? false:true)}></img> */}
-            <ExpenseList expOpen={expIsOpen} expClose={(() => setExpIsOpen(false))}></ExpenseList>
+            <DepositFund isClient={false} ClientData={users} depOpen={depisOpen} depClose={(() => setDepIsOpen(false))}></DepositFund>
+            <WithdrawFund isClient={false} ClientData={users} withOpen={withIsOpen} withClose={(() => setWithIsOpen(false))} ></WithdrawFund>
+            <TransferFund isClient={false} ClientData={users} transOpen={transIsOpen} transClose={(() => setTransIsOpen(false))}></TransferFund>
+            <ExpenseList isClient={false} ClientData={users} expOpen={expIsOpen} expClose={(() => setExpIsOpen(false))}></ExpenseList>
 
             <div className="flex-parent jc-center">
                 <img className="btnleft" src={addUserImg} alt="add user"></img>
