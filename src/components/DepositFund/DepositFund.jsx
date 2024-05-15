@@ -1,7 +1,49 @@
 //CSS IS IN WithdrawFunds.css
 import ReactDom from "react-dom";
+import React, {useState}  from "react";
 
-function DepositFund({ depOpen, depClose }) {
+function DepositFund({ depOpen, depClose, ClientData, isClient }) {
+
+  const [users, setUsers] = useState(ClientData);
+  const [sender, setSender] = useState(()=>(isClient? "Ariana Grande":""));
+  // const [receiver, setReceiver] = useState();
+  const [amount, setAmount] = useState("");
+
+  const userExist = (name) => {
+    // returns true if name from parameter is already in our users array
+    return users.find((user) => user.name === name);
+}
+
+const findUser = (name) => {
+    let foundUser = users.filter((user) => user.name === name);
+    // returns the user object that matches the name in our parameter
+    return foundUser[0];
+}
+
+const depositMoney = () => {
+  const newAmount = Number(amount);
+  if(userExist(sender) && newAmount > 0){
+  const senderInfo = findUser(sender);
+  if(senderInfo.balance >= newAmount){
+      const updateUsers = users.map((user) => {
+      if(user.name === sender){
+          return {...user, balance: user.balance + newAmount};
+      }
+      return user;
+      });
+      setUsers(updateUsers);
+  }
+  else {
+      alert("Not enough balance!");
+  }
+  } else {
+  alert("Transaction invalid!");
+  }
+  setAmount("");
+ 
+}
+
+
   if (!depOpen) return null;
 
   return ReactDom.createPortal(
@@ -25,14 +67,14 @@ function DepositFund({ depOpen, depClose }) {
             <div className="input-row"></div>
             <div className="input-row">
               <span>To acct no.: </span>
-              <input type="number" min="1" />
+              <input type="text" value={sender} onChange={(event) => setSender(event.target.value)} required disabled={isClient}></input>
             </div>
             <div className="input-row">
               <span>Amount: </span>
-              <input type="number" min={0} minLength={5} maxLength={5} />
+              <input type="number" value={amount} onChange={(event) => setAmount(event.target.value)} required></input>
             </div>
           </div>
-          <div className="modal-footer">MODAL FOOTER</div>
+          <div className="modal-footer"><button onClick={depositMoney}>Deposit</button></div>
         </div>
       </div>
     </div>,

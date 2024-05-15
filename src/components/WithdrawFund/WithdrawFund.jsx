@@ -1,8 +1,50 @@
 import "./WithdrawFund.css";
 
 import ReactDom from "react-dom";
+import React, { useState } from "react";
 
-function WithdrawFund({ withOpen, withClose }) {
+function WithdrawFund({ withOpen, withClose, ClientData, isClient }) {
+  const [users, setUsers] = useState(ClientData);
+  const [sender, setSender] = useState(()=>(isClient? "Ariana Grande":""));
+  const [amount, setAmount] = useState("");
+ 
+  const userExist = (name) => {
+    // returns true if name from parameter is already in our users array
+    return users.find((user) => user.name === name);
+  };
+
+  const findUser = (name) => {
+    let foundUser = users.filter((user) => user.name === name);
+    // returns the user object that matches the name in our parameter
+    return foundUser[0];
+  };
+  
+  const withdrawMoney = () => {
+    
+    
+
+    const newAmount = Number(amount);
+    if (userExist(sender) && newAmount > 0) {
+      const senderInfo = findUser(sender);
+      if (senderInfo.balance >= newAmount) {
+        const updateUsers = users.map((user) => {
+          if (user.name === sender) {
+            alert("Withdraw Success!")
+            return { ...user, balance: user.balance - newAmount };
+          }
+          return user;
+        });
+        setUsers(updateUsers);
+      } else {
+        alert("Not enough balance!");
+      }
+    } else {
+      alert("Transaction invalid!");
+    }
+    
+    setAmount("");
+  };
+
   if (!withOpen) return null;
 
   return ReactDom.createPortal(
@@ -25,16 +67,16 @@ function WithdrawFund({ withOpen, withClose }) {
           <div className="modal-body poppins-light">
             <div className="input-row">
               <span>Account Name:</span>
-              <input type="number" />
+              <input type="text" value={sender} onChange={(event) => setSender(event.target.value)} required disabled={isClient}></input>
             </div>
             <div className="input-row">
               <span>Amount:</span>
-              <input type="number"/>
+              <input type="number" onKeyDown = {(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()} value={amount} onChange={(event) => setAmount(event.target.value)} required></input>
             </div>
           </div>
           <div className="modal-footer">
             <div className="button-row">
-              <button>ok</button>
+              <button onClick={withdrawMoney}>ok</button>
               <button>Cancel</button>
             </div>
           </div>

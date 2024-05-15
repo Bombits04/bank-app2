@@ -8,26 +8,26 @@
   {
     "accountNumber": "00002",
     "customerName": "matt",
-    "accountBalance": 10000,
+    "accountBalance": 100,
     "expenseList": [
       {
         "expId":1,
         "item": "bills",
-        "amount": "10000"
+        "amount": 1
       },
       {"expId":2,
         "item": "cigarettes",
-        "amount": "100"
+        "amount": 1
       },
       {
         "expId":3,
         "item": "pc",
-        "amount": "10000"
+        "amount": 1
       },
       {
         "expId":4,
         "item": "vape",
-        "amount": "100"
+        "amount": 1
       }
     ]
   },

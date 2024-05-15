@@ -15,6 +15,7 @@ import expensesImg from "../../../src/assets/images/expenses.png"
 import transferImg from "../../../src/assets/images/transfer.png"
 import depositImg from "../../../src/assets/images/deposit.png"
 import withdrawImg from "../../../src/assets/images/withdraw.png"
+import ClientData from "../../../src/assets/data/ClientData.json";
 // import logo from "../../../src/assets/images/logo.png";
 
 //back and nav link import
@@ -26,6 +27,7 @@ const ClientPage = () => {
     const [withIsOpen, setWithIsOpen] = useState(false);
     const [transIsOpen, setTransIsOpen] = useState(false);
     const [expIsOpen, setExpIsOpen] = useState(false);
+    const users = ClientData;
   return (
     
     
@@ -42,10 +44,10 @@ const ClientPage = () => {
         <span>$10000</span>
       </div>
 
-      <DepositFund depOpen={depisOpen} depClose={(() => setDepIsOpen(false))}></DepositFund>
-      <WithdrawFund withOpen={withIsOpen} withClose={(() => setWithIsOpen(false))} ></WithdrawFund>
-      <TransferFund transOpen={transIsOpen} transClose={(() => setTransIsOpen(false))}></TransferFund>
-      <ExpenseList expOpen={expIsOpen} expClose={(() => setExpIsOpen(false))}></ExpenseList>
+      <DepositFund isClient={true} ClientData={users} depOpen={depisOpen} depClose={(() => setDepIsOpen(false))}></DepositFund>
+      <WithdrawFund isClient={true} ClientData={users} withOpen={withIsOpen} withClose={(() => setWithIsOpen(false))} ></WithdrawFund>
+      <TransferFund isClient={true} ClientData={users} transOpen={transIsOpen} transClose={(() => setTransIsOpen(false))}></TransferFund>
+      <ExpenseList isClient={true} ClientData={users} expOpen={expIsOpen} expClose={(() => setExpIsOpen(false))}></ExpenseList>
 
       <div className="action-buttons">
         <img onClick={( () => setWithIsOpen(true))} className="action-img" src={withdrawImg} alt="withdraw"></img>

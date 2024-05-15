@@ -1,27 +1,45 @@
 [
-    {
-        "id": 0,
-        "name": "Ariana Grande",
-        "balance": 100000
-    },
-    {
-        "id": 1,
-        "name": "Bruno Mars",
-        "balance": 100000
-    }, 
-    {
-        "id": 2,
-        "name": "Jason Mraz",
-        "balance": 50000
-    },
-    {
-        "id": 3,
-        "name": "Justin Bieber",
-        "balance": 100000
-    },
-    {
-        "id": 4,
-        "name": "Taylor Swift",
-        "balance": 100000
-    }
+  {
+    "id": 0,
+    "name": "Ariana Grande",
+    "balance": 100000,
+    "expenseList": [
+      {
+        "expId": 1,
+        "item": "bills",
+        "amount": 1
+      },
+      { "expId": 2, "item": "cigarettes", "amount": 1 },
+      {
+        "expId": 3,
+        "item": "pc",
+        "amount": 1
+      },
+      {
+        "expId": 4,
+        "item": "vape",
+        "amount": 1
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "name": "Bruno Mars",
+    "balance": 100000
+  },
+  {
+    "id": 2,
+    "name": "Jason Mraz",
+    "balance": 50000
+  },
+  {
+    "id": 3,
+    "name": "Justin Bieber",
+    "balance": 100000
+  },
+  {
+    "id": 4,
+    "name": "Taylor Swift",
+    "balance": 100000
+  }
 ]
