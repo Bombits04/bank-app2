@@ -3,7 +3,7 @@ import "./WithdrawFund.css";
 import ReactDom from "react-dom";
 import React, { useState } from "react";
 
-function WithdrawFund({ withOpen, withClose, ClientData, isClient }) {
+function WithdrawFund({ withOpen, withClose, ClientData, isClient, sendDataToParent }) {
   const [users, setUsers] = useState(ClientData);
   const [sender, setSender] = useState(()=>(isClient? "Ariana Grande":""));
   const [amount, setAmount] = useState("");
@@ -41,7 +41,7 @@ function WithdrawFund({ withOpen, withClose, ClientData, isClient }) {
     } else {
       alert("Transaction invalid!");
     }
-    
+    sendDataToParent(users);
     setAmount("");
   };
 

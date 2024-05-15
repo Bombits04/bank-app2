@@ -7,7 +7,7 @@ import React, {useState}  from "react";
 
 
 
-function TransferFund({ transOpen, transClose, ClientData, isClient }) {
+function TransferFund({ transOpen, transClose, ClientData, isClient, sendDataToParent }) {
 
   const [users, setUsers] = useState(ClientData);
   const [amount, setAmount] = useState("");
@@ -49,6 +49,7 @@ function TransferFund({ transOpen, transClose, ClientData, isClient }) {
     } else {
     alert("Transaction invalid!");
     }
+    sendDataToParent(users);
     setReceiver("");
     setAmount("");
 }

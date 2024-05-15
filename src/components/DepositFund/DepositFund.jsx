@@ -2,7 +2,7 @@
 import ReactDom from "react-dom";
 import React, {useState}  from "react";
 
-function DepositFund({ depOpen, depClose, ClientData, isClient }) {
+function DepositFund({ depOpen, depClose, ClientData, isClient, sendDataToParent }) {
 
   const [users, setUsers] = useState(ClientData);
   const [sender, setSender] = useState(()=>(isClient? "Ariana Grande":""));
@@ -39,8 +39,8 @@ const depositMoney = () => {
   } else {
   alert("Transaction invalid!");
   }
+  sendDataToParent(users);
   setAmount("");
- 
 }
 
 
@@ -66,7 +66,7 @@ const depositMoney = () => {
           <div className="modal-body poppins-light">
             <div className="input-row"></div>
             <div className="input-row">
-              <span>To acct no.: </span>
+              <span>Account Name: </span>
               <input type="text" value={sender} onChange={(event) => setSender(event.target.value)} required disabled={isClient}></input>
             </div>
             <div className="input-row">
