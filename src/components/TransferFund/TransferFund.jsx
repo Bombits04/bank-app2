@@ -1,21 +1,18 @@
 //CSS IS IN WithdrawFunds.css
 import ReactDom from "react-dom";
-import React, {useState}  from "react";
-// import ClientData from "../../../src/assets/data/ClientData.json";
+import React, { useState } from "react";
 
-
-
-
-
-function TransferFund({ transOpen, transClose, ClientData, isClient, sendDataToParent }) {
-
+function TransferFund({
+  transOpen,
+  transClose,
+  ClientData,
+  isClient,
+  handleTransfer,
+}) {
   const [users, setUsers] = useState(ClientData);
   const [amount, setAmount] = useState("");
-  const [sender, setSender] = useState(()=>(isClient? "Ariana Grande":""));
+  const [sender, setSender] = useState(() => (isClient ? "Ariana Grande" : ""));
   const [receiver, setReceiver] = useState("");
-  
- 
-  
 
   const userExist = (name) => {
     // returns true if name from parameter is already in our users array
@@ -30,38 +27,45 @@ function TransferFund({ transOpen, transClose, ClientData, isClient, sendDataToP
 
   const transferMoney = () => {
     const newAmount = Number(amount);
-    if(userExist(sender) && userExist(receiver) && sender !== receiver && newAmount > 0){
-    const senderInfo = findUser(sender);
-    if(senderInfo.balance >= newAmount){
+    if (
+      userExist(sender) &&
+      userExist(receiver) &&
+      sender !== receiver &&
+      newAmount > 0
+    ) {
+      const senderInfo = findUser(sender);
+      if (senderInfo.balance >= newAmount) {
         const updateUsers = users.map((user) => {
-        if(user.name === sender){
-          console.log(`Sender:${sender} Balance: ${user.balance-newAmount}`);
-            return {...user, balance: user.balance - newAmount};
-            
-        } else if(user.name === receiver) {
-          console.log(`Receiver:${receiver} Balance: ${user.balance+newAmount}`);
-          alert("Transfer Success!")
-            return {...user, balance: user.balance + newAmount};
-        }
-        
-        return user;
+          if (user.name === sender) {
+            console.log(
+              `Sender:${sender} Balance: ${user.balance - newAmount}`
+            );
+            return { ...user, balance: user.balance - newAmount };
+          } else if (user.name === receiver) {
+            console.log(
+              `Receiver:${receiver} Balance: ${user.balance + newAmount}`
+            );
+            alert("Transfer Success!");
+            return { ...user, balance: user.balance + newAmount };
+          }
+
+          return user;
         });
+        handleTransfer(updateUsers);
         setUsers(updateUsers);
-    }
-    else {
+      } else {
         alert("Not enough balance!");
-    }
+      }
     } else {
-    alert("Transaction invalid!");
+      alert("Transaction invalid!");
     }
-    // sendDataToParent(users);
     setReceiver("");
     setAmount("");
-    if(!isClient){
+
+    if (!isClient) {
       setSender("");
     }
-}
-
+  };
 
   if (!transOpen) return null;
   return ReactDom.createPortal(
@@ -84,18 +88,38 @@ function TransferFund({ transOpen, transClose, ClientData, isClient, sendDataToP
           <div className="modal-body poppins-light">
             <div className="input-row">
               <span>Sender:</span>
-              <input value={sender} onChange={(event) => setSender(event.target.value)} required disabled={isClient}></input>
+              <input
+                value={sender}
+                onChange={(event) => setSender(event.target.value)}
+                required
+                disabled={isClient}
+              ></input>
             </div>
             <div className="input-row">
               <span>Receiver:</span>
-              <input type="text" value={receiver} onChange={(event) => setReceiver(event.target.value)} required></input>
+              <input
+                type="text"
+                value={receiver}
+                onChange={(event) => setReceiver(event.target.value)}
+                required
+              ></input>
             </div>
             <div className="input-row">
               <span>Amount: </span>
-              <input type="number" onKeyDown = {(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()} value={amount} onChange={(event) => setAmount(event.target.value)} required></input>
+              <input
+                type="number"
+                onKeyDown={(evt) =>
+                  ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()
+                }
+                value={amount}
+                onChange={(event) => setAmount(event.target.value)}
+                required
+              ></input>
             </div>
           </div>
-          <div className="modal-footer"><button onClick={transferMoney}>Transfer now!</button></div>
+          <div className="modal-footer">
+            <button onClick={transferMoney}>Transfer now!</button>
+          </div>
         </div>
       </div>
     </div>,

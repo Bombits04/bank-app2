@@ -3,11 +3,18 @@ import "./WithdrawFund.css";
 import ReactDom from "react-dom";
 import React, { useState } from "react";
 
-function WithdrawFund({ withOpen, withClose, ClientData, isClient, sendDataToParent }) {
+function WithdrawFund({
+  withOpen,
+  withClose,
+  ClientData,
+  isClient,
+  handleWithdraw,
+}) {
   const [users, setUsers] = useState(ClientData);
-  const [sender, setSender] = useState(()=>(isClient? "Ariana Grande":""));
+  const [sender, setSender] = useState(() => (isClient ? "Ariana Grande" : ""));
   const [amount, setAmount] = useState("");
- 
+  console.log("Withdraw: ");
+  console.log(ClientData);
   const userExist = (name) => {
     // returns true if name from parameter is already in our users array
     return users.find((user) => user.name === name);
@@ -18,23 +25,21 @@ function WithdrawFund({ withOpen, withClose, ClientData, isClient, sendDataToPar
     // returns the user object that matches the name in our parameter
     return foundUser[0];
   };
-  
-  const withdrawMoney = () => {
-    
-    
 
+  const withdrawMoney = () => {
     const newAmount = Number(amount);
     if (userExist(sender) && newAmount > 0) {
       const senderInfo = findUser(sender);
       if (senderInfo.balance >= newAmount) {
         const updateUsers = users.map((user) => {
           if (user.name === sender) {
-            alert("Withdraw Success!")
-            console.log(user.balance-newAmount);
+            alert("Withdraw Success!");
+            console.log(user.balance - newAmount);
             return { ...user, balance: user.balance - newAmount };
           }
           return user;
         });
+        handleWithdraw(updateUsers);
         setUsers(updateUsers);
       } else {
         alert("Not enough balance!");
@@ -42,10 +47,10 @@ function WithdrawFund({ withOpen, withClose, ClientData, isClient, sendDataToPar
     } else {
       alert("Transaction invalid!");
     }
-    // sendDataToParent(users);
     setAmount("");
-    
-    if(!isClient){
+    setUsers("");
+
+    if (!isClient) {
       setSender("");
     }
   };
@@ -72,11 +77,25 @@ function WithdrawFund({ withOpen, withClose, ClientData, isClient, sendDataToPar
           <div className="modal-body poppins-light">
             <div className="input-row">
               <span>Account Name:</span>
-              <input type="text" value={sender} onChange={(event) => setSender(event.target.value)} required disabled={isClient}></input>
+              <input
+                type="text"
+                value={sender}
+                onChange={(event) => setSender(event.target.value)}
+                required
+                disabled={isClient}
+              ></input>
             </div>
             <div className="input-row">
               <span>Amount:</span>
-              <input type="number" onKeyDown = {(evt) => ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()} value={amount} onChange={(event) => setAmount(event.target.value)} required></input>
+              <input
+                type="number"
+                onKeyDown={(evt) =>
+                  ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()
+                }
+                value={amount}
+                onChange={(event) => setAmount(event.target.value)}
+                required
+              ></input>
             </div>
           </div>
           <div className="modal-footer">

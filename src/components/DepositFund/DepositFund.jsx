@@ -2,13 +2,14 @@
 import ReactDom from "react-dom";
 import React, {useState}  from "react";
 
-function DepositFund({ depOpen, depClose, ClientData, isClient, sendDataToParent }) {
+function DepositFund({ depOpen, depClose, ClientData, isClient, handleDeposit }) {
 
   const [users, setUsers] = useState(ClientData);
   const [sender, setSender] = useState(()=>(isClient? "Ariana Grande":""));
-  // const [receiver, setReceiver] = useState();
   const [amount, setAmount] = useState("");
-  const [data, setData] = useState("");
+  console.log("Deposit: ");
+  console.log(ClientData);
+
 
   const userExist = (name) => {
     // returns true if name from parameter is already in our users array
@@ -31,11 +32,14 @@ const depositMoney = () => {
       if(user.name === sender){
         alert("Deposit Success!")
           console.log(`${user.balance + newAmount}`)
+
+         
           return {...user, balance: user.balance + newAmount};
       }
       
       return user;
       });
+      handleDeposit(updateUsers)
       setUsers(updateUsers);
       
   }
@@ -45,9 +49,9 @@ const depositMoney = () => {
   } else {
   alert("Transaction invalid!");
   }
-  setData(users)
-  sendDataToParent(data);
+  
   setAmount("");
+  setUsers("");
   if(!isClient){
     setSender("");
   }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function AddExpenses(props) {
-  const { handleAddTasks, newId } = props;
+  const { handleAddExp, newId } = props;
 
   const [expenseItem, setExpenseItem] = useState("");
   const [expenseAmount, setExpenseAmount] = useState("");
@@ -14,7 +14,7 @@ function AddExpenses(props) {
     };
 
     console.log(newExpenseObj);
-    handleAddTasks(newExpenseObj);
+    handleAddExp(newExpenseObj);
 
     setExpenseItem("");
     setExpenseAmount("");

@@ -5,21 +5,18 @@ import "./ExpenseList.css";
 import { useState } from "react";
 import AddExpenses from "../../components/AddExpense/AddExpense";
 
-
-
-function ExpenseList({expOpen, expClose, isClient, ClientData}) {
-  
+function ExpenseList({ expOpen, expClose, isClient, ClientData }) {
   // const data = ClientData.find((data) => data.name === "Ariana Grande");
-  const [data, setData] = useState(ClientData.find((data) => data.name === "Ariana Grande"));
+  const [data, setData] = useState(
+    ClientData.find((data) => data.name === "Ariana Grande")
+  );
   const { expenseList } = data;
   const [expense, setExpense] = useState(expenseList);
   const [count, setCount] = useState(expense.length + 1);
   let sum = 0;
   expense.map((list, i) => (sum = sum + Number(list.amount)));
   const [expenseTotal, setExpenseTotal] = useState(sum);
-  const [updatedBalance, setUpdatedBalance] = useState(
-    data.balance - sum
-  );
+  const [updatedBalance, setUpdatedBalance] = useState(data.balance - sum);
 
   const [selectValue, setSelectValue] = useState("");
   const onChange = (e) => {
@@ -27,8 +24,7 @@ function ExpenseList({expOpen, expClose, isClient, ClientData}) {
     setSelectValue(value);
     setData(ClientData.find((data) => data.name === selectValue));
     setExpense(data.expenseList);
-  }
-
+  };
 
   const updateValuesDelete = (Id) => {
     // let sum2 = 0;
@@ -37,7 +33,7 @@ function ExpenseList({expOpen, expClose, isClient, ClientData}) {
 
     setUpdatedBalance(Number(updatedBalance) + Number(amountdeleted[0].amount));
     // expense.map((list)=>(sum2 = sum2 + Number(list.amount)))
-    
+
     for (let i = 0; i < expense.length; i++) {
       if (expense[i].expId !== Id) {
         sumarr = sumarr + Number(expense[i].amount);
@@ -53,7 +49,7 @@ function ExpenseList({expOpen, expClose, isClient, ClientData}) {
     updateValuesDelete(Id);
   };
 
-  const addTask = (newExp) => {
+  const addExp = (newExp) => {
     let newCount = count + 1;
     setCount(newCount);
     setExpense((oldList) => [...oldList, newExp]);
@@ -81,23 +77,24 @@ function ExpenseList({expOpen, expClose, isClient, ClientData}) {
             <span className="montserrat-600">Expenses</span>
           </div>
           <div className="modal-body">
-            
             {!isClient && (
-            
-            <select onChange={onChange} name="users" id="users" className="select-users">
-              {ClientData.map((users, i) =>{
-                return(
-                 <>
-                    <option key= {i} value={users.name}>{users.name}</option>
-        
+              <select
+                onChange={onChange}
+                name="users"
+                id="users"
+                className="select-users"
+              >
+                {ClientData.map((users, i) => {
+                  return (
+                    <>
+                      <option key={i} value={users.name}>
+                        {users.name}
+                      </option>
                     </>
-                )
-              } )}
-              
-              
-            </select>
-            )
-            }
+                  );
+                })}
+              </select>
+            )}
             <div className="info-container">
               <div className="budget-disp">
                 Avilable funds: {updatedBalance}
@@ -129,10 +126,9 @@ function ExpenseList({expOpen, expClose, isClient, ClientData}) {
               </div>
             </div>
             <div className="expense-add">
-              <AddExpenses handleAddTasks={addTask} newId={count}></AddExpenses>
+              <AddExpenses handleAddExp={addExp} newId={count}></AddExpenses>
             </div>
           </div>
-          {/* <div className="modal-footer">MODAL FOOTER</div> */}
         </div>
       </div>
     </div>,
